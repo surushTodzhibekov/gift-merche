@@ -11,7 +11,8 @@ import {
   ArrowRight,
   Instagram,
   Facebook,
-  Twitter
+  Twitter,
+  Globe
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,119 +40,155 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-800">
-      {/* HEADER */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between gap-4">
+      {/* MAIN WRAPPER FOR GRADIENT BACKGROUND (Header + Hero) */}
+      <div className="bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-purple-200 via-purple-100 to-blue-50 relative rounded-b-[40px] overflow-hidden pb-20">
+        
+        {/* HEADER */}
+        <header className="relative z-50 pt-6 px-4 md:px-12">
+          <div className="flex items-center justify-between gap-8 mb-8">
             {/* Logo */}
-            <div className="text-2xl font-bold tracking-widest font-heading text-slate-900 uppercase cursor-pointer">
-              Gifts & Merch
+            <div className="text-2xl md:text-3xl font-black tracking-widest font-heading text-slate-900 uppercase cursor-pointer">
+              GIFTS & MERCH
             </div>
 
             {/* Search Bar */}
-            <div className="hidden md:flex flex-1 max-w-md mx-8 relative">
+            <div className="hidden md:flex flex-1 max-w-xl relative">
               <Input 
-                className="w-full bg-slate-100 border-none rounded-full pl-10 pr-4 h-10 focus-visible:ring-brand-purple shadow-none" 
-                placeholder="Search..." 
+                className="w-full bg-transparent border-2 border-slate-800 rounded-full pl-12 pr-4 h-12 placeholder:text-slate-400 focus-visible:ring-0 focus-visible:border-slate-900 font-medium" 
+                placeholder="Поиск" 
               />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" />
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-4">
-              <Button className="hidden md:flex bg-brand-green hover:bg-emerald-600 text-white rounded-full px-6 font-medium shadow-lg shadow-emerald-200 border-none cursor-pointer">
-                +38 044 123 45 67
+            <div className="flex items-center gap-6">
+              <Button className="hidden lg:flex bg-[#00C48C] hover:bg-[#00A876] text-white rounded-full px-8 h-12 font-bold shadow-lg shadow-emerald-200/50 border-none cursor-pointer text-base">
+                +380 630 130 103
               </Button>
-              <button className="p-2 hover:bg-slate-100 rounded-full transition-colors cursor-pointer">
-                <User className="w-6 h-6 text-slate-600" />
+              <button className="p-2 hover:bg-white/20 rounded-full transition-colors cursor-pointer">
+                <User className="w-7 h-7 text-slate-800" />
               </button>
-              <div className="relative">
-                <button className="p-2 hover:bg-slate-100 rounded-full transition-colors cursor-pointer">
-                  <ShoppingBag className="w-6 h-6 text-slate-600" />
-                </button>
-                <span className="absolute top-1 right-0 bg-brand-green text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
-                  0
-                </span>
+              <div className="hidden md:flex items-center gap-1 font-medium text-slate-600 text-sm cursor-pointer hover:text-slate-900">
+                <span className="font-bold text-slate-900">RU</span>
+                <span>/</span>
+                <span>ENG</span>
               </div>
             </div>
           </div>
 
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center justify-between mt-4 py-2 border-t border-slate-100 text-sm font-medium text-slate-600 overflow-x-auto">
-            <Link href="/sets" className="whitespace-nowrap hover:text-brand-purple transition-colors px-2 cursor-pointer">Sets</Link>
-            <Link href="/all" className="bg-slate-900 text-white px-4 py-1 rounded-full whitespace-nowrap hover:bg-slate-800 transition-colors cursor-pointer">All items</Link>
-            <Link href="/textiles" className="whitespace-nowrap hover:text-brand-purple transition-colors px-2 cursor-pointer">Textiles</Link>
-            <Link href="/production" className="whitespace-nowrap hover:text-brand-purple transition-colors px-2 cursor-pointer">Production</Link>
-            <Link href="/info" className="whitespace-nowrap hover:text-brand-purple transition-colors px-2 cursor-pointer">Information</Link>
-            <Link href="/sale" className="whitespace-nowrap text-brand-purple font-bold px-2 cursor-pointer">SHOPPERS DISCOUNT -25%</Link>
-          </nav>
-        </div>
-      </header>
+          {/* Navigation Row */}
+          <div className="flex flex-col md:flex-row items-center justify-between border-t border-slate-300/30 pt-4 md:pt-0">
+             {/* Left Nav Items */}
+             <nav className="flex items-center gap-1 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+                <Link href="/sets" className="px-6 py-3 font-bold text-slate-700 hover:text-black text-sm uppercase tracking-wide whitespace-nowrap">Наборы</Link>
+                <div className="relative group">
+                  <Link href="/all" className="px-8 py-5 bg-slate-900 text-white font-bold text-sm uppercase tracking-wide rounded-t-lg whitespace-nowrap block shadow-xl z-10 relative">Все товары</Link>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-slate-900"></div>
+                </div>
+                <Link href="/tailoring" className="px-6 py-3 font-bold text-slate-700 hover:text-black text-sm uppercase tracking-wide whitespace-nowrap">Пошив</Link>
+                <Link href="/production" className="px-6 py-3 font-bold text-slate-700 hover:text-black text-sm uppercase tracking-wide whitespace-nowrap">Производство</Link>
+                <Link href="/info" className="px-6 py-3 font-bold text-slate-700 hover:text-black text-sm uppercase tracking-wide whitespace-nowrap">Информация</Link>
+             </nav>
 
-      {/* HERO SECTION */}
-      <section className="relative bg-gradient-to-r from-purple-200 via-purple-100 to-blue-50 pt-16 pb-32 overflow-hidden rounded-b-[50px]">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
-          <div className="space-y-8 z-20">
-            <h1 className="text-4xl md:text-6xl font-black font-heading uppercase leading-tight text-slate-900">
-              Fresh breath in <br />
-              <span className="text-slate-800">corporate life</span>
-            </h1>
-            <p className="text-slate-600 max-w-md text-lg leading-relaxed">
-              We manufacture high-quality merch for those who want to show their individuality and team spirit.
-            </p>
+             {/* Right Promo */}
+             <div className="hidden lg:flex items-center gap-3 ml-auto">
+                <span className="font-black text-slate-800 uppercase text-lg tracking-tight">ШОППЕРЫ СО СКИДКОЙ - 25%</span>
+                <div className="relative w-12 h-12 rotate-12 transform hover:scale-110 transition-transform">
+                  <img 
+                    src={ASSETS.bags} 
+                    className="w-full h-full object-contain drop-shadow-md" 
+                    alt="Bag icon"
+                  />
+                </div>
+             </div>
+          </div>
+        </header>
+
+        {/* HERO CONTENT */}
+        <div className="container mx-auto px-4 md:px-12 pt-12 md:pt-20 pb-12">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-8 max-w-2xl z-20">
+              <h1 className="text-4xl md:text-[3.5rem] font-black font-heading uppercase leading-[1.1] text-slate-800 tracking-tight drop-shadow-sm">
+                СВЕЖЕЕ ДЫХАНИЕ В <br />
+                <span className="text-slate-800">КОРПОРАТИВНОЙ ЖИЗНИ</span>
+              </h1>
+              <p className="text-slate-600 text-lg leading-relaxed max-w-lg font-medium">
+                Ми вдосконалили процес замовлення продукції для того, щоб Ви і Ваша компанія сконцентрувались на основних задачах і досягали поставлених цілей.
+              </p>
+              
+              {/* Feature Circles */}
+              <div className="flex flex-wrap gap-8 pt-8">
+                <div className="flex flex-col items-center text-center gap-3 w-32">
+                  <div className="w-20 h-20 rounded-full bg-purple-200/80 flex items-center justify-center text-purple-600 shadow-inner border border-purple-100 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-white/20 rounded-full blur-md"></div>
+                    <CheckCircle className="w-8 h-8 relative z-10 stroke-[1.5]" />
+                  </div>
+                  <span className="text-[0.7rem] font-bold uppercase tracking-wider leading-tight text-slate-800">
+                    Высокое <br/> качество ONLY
+                  </span>
+                </div>
+                
+                <div className="flex flex-col items-center text-center gap-3 w-32">
+                  <div className="w-20 h-20 rounded-full bg-purple-200/80 flex items-center justify-center text-purple-600 shadow-inner border border-purple-100 relative overflow-hidden">
+                     <div className="absolute inset-0 bg-white/20 rounded-full blur-md"></div>
+                    <Clock className="w-8 h-8 relative z-10 stroke-[1.5]" />
+                  </div>
+                  <span className="text-[0.7rem] font-bold uppercase tracking-wider leading-tight text-slate-800">
+                    Поддержка <br/> менеджера 24/7
+                  </span>
+                </div>
+                
+                <div className="flex flex-col items-center text-center gap-3 w-32">
+                  <div className="w-20 h-20 rounded-full bg-purple-200/80 flex items-center justify-center text-purple-600 shadow-inner border border-purple-100 relative overflow-hidden">
+                     <div className="absolute inset-0 bg-white/20 rounded-full blur-md"></div>
+                    <Zap className="w-8 h-8 relative z-10 stroke-[1.5]" />
+                  </div>
+                  <span className="text-[0.7rem] font-bold uppercase tracking-wider leading-tight text-slate-800">
+                    Выполнение заказа <br/> в TURBO-режиме
+                  </span>
+                </div>
+              </div>
+            </div>
             
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              <div className="flex flex-col items-center text-center gap-2">
-                <div className="w-16 h-16 rounded-full bg-purple-200/50 flex items-center justify-center text-brand-purple backdrop-blur-sm">
-                  <CheckCircle className="w-8 h-8" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wide">High quality ONLY</span>
-              </div>
-              <div className="flex flex-col items-center text-center gap-2">
-                <div className="w-16 h-16 rounded-full bg-purple-200/50 flex items-center justify-center text-brand-purple backdrop-blur-sm">
-                  <Clock className="w-8 h-8" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wide">Manager support 24/7</span>
-              </div>
-              <div className="flex flex-col items-center text-center gap-2">
-                <div className="w-16 h-16 rounded-full bg-purple-200/50 flex items-center justify-center text-brand-purple backdrop-blur-sm">
-                  <Zap className="w-8 h-8" />
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wide">Order in TURBO-mode</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="relative z-10">
-            {/* Image */}
-            <div className="relative transform md:translate-x-10 md:scale-110">
-              <img 
+            {/* Hero Image - Positioned to look like cutout */}
+            <div className="relative h-full min-h-[500px] flex items-end justify-center md:justify-end">
+               {/* We use the generated image but try to blend it. 
+                   Since it's a rectangle, we'll use a mask to soften the bottom/sides 
+                   or just rely on the composition.
+               */}
+               <img 
                 src={ASSETS.hero} 
-                alt="Happy corporate life" 
-                className="rounded-3xl object-cover h-[500px] w-full shadow-2xl mask-image-gradient"
-              />
+                alt="Corporate Life" 
+                className="relative z-10 max-w-full md:max-w-[120%] w-auto h-[600px] object-cover object-top mask-image-gradient-b"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
+                }}
+               />
             </div>
-            {/* Decorative blurred circles */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-300/30 rounded-full blur-3xl -z-10"></div>
           </div>
         </div>
-        
-        {/* Wavy bottom separator using SVG */}
-        <div className="absolute bottom-0 left-0 w-full leading-none text-white translate-y-1">
+
+        {/* Wavy Bottom Separator */}
+        <div className="absolute bottom-0 left-0 w-full leading-none text-white z-20">
            <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="w-full h-16 md:h-24">
-             <path d="M0,0 C480,100 960,100 1440,0 L1440,100 L0,100 Z" fill="currentColor"></path>
+             <path d="M0,100 C480,100 960,100 1440,100 L1440,0 C960,100 480,100 0,0 Z" fill="white"></path>
+             <path d="M0,100 C320,100 600,60 900,60 C1200,60 1380,90 1440,100 Z" fill="white"></path>
            </svg>
         </div>
-      </section>
+      </div>
 
       {/* POPULAR SECTION */}
       <section className="py-20 container mx-auto px-4 relative">
         <div className="flex justify-between items-end mb-8">
           <h2 className="text-3xl font-bold font-heading flex items-center gap-2">
-            Most Popular <span className="text-brand-green text-xl">★</span>
+            Самое популярное <span className="text-brand-green text-xl">★</span>
           </h2>
-          <Link href="/all" className="text-sm text-slate-500 hover:text-brand-purple flex items-center gap-1 cursor-pointer">
-            See all <ArrowRight className="w-4 h-4" />
+          <div className="text-sm text-slate-400">
+             Товары, которые чаще всего заказывают наши клиенты
+          </div>
+          <Link href="/all" className="text-sm text-slate-500 hover:text-brand-purple flex items-center gap-1 cursor-pointer ml-auto">
+            Все товары <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
@@ -164,7 +201,7 @@ export default function Home() {
               className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 mix-blend-multiply"
             />
             <div className="absolute bottom-6 left-6">
-              <h3 className="text-xl font-bold">Shoppers</h3>
+              <h3 className="text-xl font-bold">Шопперы</h3>
               <p className="text-slate-400 text-sm">Cotton Tote Bag Mock-up</p>
             </div>
           </div>
@@ -173,30 +210,36 @@ export default function Home() {
           <div className="grid grid-rows-2 gap-6">
             {/* Top Right */}
             <div className="bg-slate-50 rounded-3xl p-6 flex flex-col items-center justify-center relative group cursor-pointer">
-              <div className="absolute top-4 right-4 bg-brand-green text-white text-xs font-bold px-2 py-1 rounded-full z-10">
-                275 UAH
+              <div className="absolute top-4 right-4 flex items-center gap-2">
+                 <div className="bg-white rounded-full p-1 shadow-sm">
+                    <span className="text-[10px] font-bold px-2">Популярность</span>
+                 </div>
+                 <div className="bg-brand-green text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg shadow-emerald-200">
+                    <ShoppingBag className="w-4 h-4" />
+                 </div>
               </div>
                <img 
                 src={ASSETS.mugs} 
                 alt="Mugs" 
                 className="h-32 object-contain mb-4 group-hover:scale-105 transition-transform mix-blend-multiply"
               />
-              <h3 className="font-bold">Mugs</h3>
+              <h3 className="font-bold self-start px-4">Чашки</h3>
+              <div className="self-start px-4 text-xs font-bold text-slate-900 mt-1">275 грн</div>
             </div>
 
             {/* Bottom Right Split */}
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-slate-50 rounded-3xl p-4 flex flex-col items-center justify-center group cursor-pointer">
                  <div className="h-20 w-full flex items-center justify-center mb-2">
-                   <div className="w-12 h-16 bg-blue-600 rounded-lg shadow-lg group-hover:scale-110 transition-transform"></div>
+                   <div className="w-10 h-14 bg-blue-600 rounded-sm shadow-lg group-hover:scale-110 transition-transform"></div>
                  </div>
-                <h3 className="text-sm font-bold">Thermos</h3>
+                <h3 className="text-sm font-bold">Термосы</h3>
               </div>
               <div className="bg-slate-50 rounded-3xl p-4 flex flex-col items-center justify-center group cursor-pointer">
                  <div className="h-20 w-full flex items-center justify-center mb-2">
-                    <div className="w-16 h-16 bg-slate-800 rounded-lg shadow-lg group-hover:scale-110 transition-transform"></div>
+                    <div className="w-14 h-14 bg-slate-800 rounded-sm shadow-lg group-hover:scale-110 transition-transform"></div>
                  </div>
-                <h3 className="text-sm font-bold">T-Shirts</h3>
+                <h3 className="text-sm font-bold">Футболки</h3>
               </div>
             </div>
           </div>
@@ -216,7 +259,7 @@ export default function Home() {
         
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8 z-10">
-            <h2 className="text-5xl font-black tracking-tighter select-none">
+            <h2 className="text-5xl font-black tracking-tighter select-none flex gap-1">
               <span className="text-pink-400">C</span>
               <span className="text-purple-400">R</span>
               <span className="text-blue-400">E</span>
@@ -227,18 +270,18 @@ export default function Home() {
               <span className="text-indigo-400">E</span>
             </h2>
             <h3 className="text-3xl font-bold font-heading leading-tight">
-              Want to surprise your colleagues/partners with unusual gifts?
+              Хотите удивить ваших коллег/партнеров необычными подарками?
             </h3>
             <p className="text-slate-500">
-              Choose ready-made gift sets or decide on the criteria by which we will assemble a box for YOU.
+              Выберите готовые подарочные наборы или задайте критерии по которым мы соберем для ВАС уникальный бокс.
             </p>
             
             <div className="flex gap-4">
-              <Button className="bg-slate-900 text-white rounded-full px-8 py-6 hover:bg-slate-800 cursor-pointer shadow-xl">
-                Go to sets
+              <Button className="bg-slate-900 text-white rounded-full px-8 py-6 hover:bg-slate-800 cursor-pointer shadow-xl font-bold">
+                Перейти к наборам
               </Button>
-              <Button variant="outline" className="rounded-full px-8 py-6 border-slate-200 hover:bg-slate-50 cursor-pointer">
-                Open constructor
+              <Button variant="outline" className="rounded-full px-8 py-6 border-slate-200 hover:bg-slate-50 cursor-pointer font-bold text-slate-500">
+                Собрать свой
               </Button>
             </div>
           </div>
@@ -267,16 +310,16 @@ export default function Home() {
                 className="w-full rounded-lg shadow-lg mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 text-center rotate-[-5deg] opacity-80">
-                <h4 className="text-xl font-black text-slate-800 uppercase">Your<br/>Design<br/>Can Be<br/>Here</h4>
+                <h4 className="text-xl font-black text-slate-800 uppercase">YOUR<br/>DESIGN<br/>CAN BE<br/>HERE</h4>
               </div>
           </div>
           
           <div className="space-y-6">
             <h3 className="text-2xl font-bold font-heading leading-snug">
-              Besides finished products of high quality, we can produce clothes, accessories, sweets and other things for you upon request.
+              Помимо готовой продукции высокого качества, мы можем для Вас произвести одежду, аксессуары, вкусности и другое под заказ.
             </h3>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Thanks to our production facilities, we can produce large batches in a short time, with strictly fixed deadlines.
+              Благодаря нашему производству мы изготавливаем большие партии в короткие сроки, а так же у Вас всегда есть возможность кастомизировать изделия.
             </p>
             
             <div className="flex gap-4 pt-4">
@@ -305,22 +348,22 @@ export default function Home() {
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 relative z-10 pt-12">
           <div className="space-y-8">
             <h2 className="text-3xl font-bold font-heading">
-              Do you have a UNIQUE idea <br />
-              for merch development?
+              У вас своя УНИКАЛЬНАЯ идея <br />
+              по разработке мерча?
             </h2>
             <p className="text-slate-500">
-              Briefly describe your idea in the contact form, and our manager will contact you within 1 hour.
+              Кратко опишите вашу идею в форму ниже, и наш менеджер свяжется с Вами в течении 1 часа
             </p>
             
             <form className="space-y-8 max-w-md" onSubmit={(e) => e.preventDefault()}>
                <div className="grid grid-cols-2 gap-8">
-                 <Input placeholder="Your name" className="bg-transparent border-b border-slate-300 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand-purple placeholder:text-slate-400 shadow-none" />
-                 <Input placeholder="Your phone/social" className="bg-transparent border-b border-slate-300 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand-purple placeholder:text-slate-400 shadow-none" />
+                 <Input placeholder="Ваше имя" className="bg-transparent border-b border-slate-300 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand-purple placeholder:text-slate-400 shadow-none" />
+                 <Input placeholder="Ваш телефон/соц.сеть" className="bg-transparent border-b border-slate-300 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand-purple placeholder:text-slate-400 shadow-none" />
                </div>
                <div className="flex gap-8 items-end">
-                  <Input placeholder="Your email" className="bg-transparent border-b border-slate-300 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand-purple placeholder:text-slate-400 flex-1 shadow-none" />
+                  <Input placeholder="Ваш e-mail" className="bg-transparent border-b border-slate-300 rounded-none px-0 py-2 focus-visible:ring-0 focus-visible:border-brand-purple placeholder:text-slate-400 flex-1 shadow-none" />
                   <Button type="submit" className="bg-brand-green hover:bg-emerald-600 text-white rounded-full px-10 py-2 h-auto shadow-lg shadow-emerald-200 font-bold cursor-pointer">
-                    Send
+                    Заказать
                   </Button>
                </div>
             </form>
@@ -348,7 +391,7 @@ export default function Home() {
 
       {/* PARTNERS */}
       <section className="py-16 container mx-auto px-4">
-        <h3 className="text-xl font-bold font-heading mb-8">We work with</h3>
+        <h3 className="text-xl font-bold font-heading mb-8">С нами сотрудничают</h3>
         <div className="flex flex-wrap justify-between items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 cursor-default">
           <div className="text-3xl font-black italic">NIKE</div>
           <div className="text-3xl font-serif">Coca-Cola</div>
@@ -363,10 +406,10 @@ export default function Home() {
         <div className="container mx-auto px-4 grid md:grid-cols-4 gap-8 mb-12">
           <div className="space-y-4">
             <div className="text-xl font-bold tracking-widest font-heading text-slate-900 uppercase">
-              Gifts & Merch
+              GIFTS & MERCH
             </div>
             <p className="text-xs text-slate-500 max-w-xs">
-              Fresh breath in corporate life and fresh corporate merch solutions.
+              Свежее дыхание в корпоративной жизни и свежие решения для корпоративного мерча.
             </p>
             <div className="flex gap-4">
               <div className="bg-white p-2 rounded-full shadow-sm hover:text-brand-purple cursor-pointer transition-colors">
@@ -382,34 +425,34 @@ export default function Home() {
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-sm">Categories</h4>
+            <h4 className="font-bold mb-4 text-sm">Категории</h4>
             <ul className="space-y-2 text-sm text-slate-500">
-              <li><a href="#" className="hover:text-brand-purple transition-colors">Sets</a></li>
-              <li><a href="#" className="hover:text-brand-purple transition-colors">All items</a></li>
-              <li><a href="#" className="hover:text-brand-purple transition-colors">Textiles</a></li>
-              <li><a href="#" className="hover:text-brand-purple transition-colors">Production</a></li>
+              <li><a href="#" className="hover:text-brand-purple transition-colors">Наборы</a></li>
+              <li><a href="#" className="hover:text-brand-purple transition-colors">Все товары</a></li>
+              <li><a href="#" className="hover:text-brand-purple transition-colors">Пошив</a></li>
+              <li><a href="#" className="hover:text-brand-purple transition-colors">Производство</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-sm">Information</h4>
+            <h4 className="font-bold mb-4 text-sm">Информация</h4>
             <ul className="space-y-2 text-sm text-slate-500">
-              <li><a href="#" className="hover:text-brand-purple transition-colors">About us</a></li>
+              <li><a href="#" className="hover:text-brand-purple transition-colors">О нас</a></li>
               <li><a href="#" className="hover:text-brand-purple transition-colors">FAQ</a></li>
-              <li><a href="#" className="hover:text-brand-purple transition-colors">Contacts</a></li>
+              <li><a href="#" className="hover:text-brand-purple transition-colors">Контакты</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-sm">Connect with manager</h4>
+            <h4 className="font-bold mb-4 text-sm">Связаться с менеджером</h4>
             <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2 shadow-sm hover:shadow-md transition-shadow">
-              <span className="text-xs text-slate-400">Type number...</span>
+              <span className="text-xs text-slate-400">Введите номер...</span>
               <div className="ml-auto w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 cursor-pointer hover:bg-brand-green hover:text-white transition-colors">
                 <ArrowRight className="w-3 h-3" />
               </div>
             </div>
             <p className="text-xs text-slate-400 mt-4 font-medium">
-              +38 044 123 45 67 <br/>
+              +380 630 130 103 <br/>
               sales@giftsmerch.com
             </p>
           </div>
