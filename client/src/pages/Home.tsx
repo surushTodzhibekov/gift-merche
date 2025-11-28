@@ -41,7 +41,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-800">
       {/* MAIN WRAPPER FOR GRADIENT BACKGROUND (Header + Hero) */}
-      <div className="bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-purple-200 via-purple-100 to-blue-50 relative rounded-b-[40px] overflow-hidden pb-20">
+      <div 
+        className="relative rounded-b-[40px] overflow-hidden pb-20"
+        style={{ background: "linear-gradient(42.14deg, #9796F0 -17.31%, #FBC7D4 106.72%)" }}
+      >
         
         {/* HEADER */}
         <header className="relative z-50 pt-6 px-4 md:px-12">
