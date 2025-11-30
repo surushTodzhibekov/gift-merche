@@ -5,23 +5,99 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Gilroy (WOFF) — primary site font */
+@font-face {
+  font-family: "Gilroy";
+  src: url("../public/fonts/gilroy/Gilroy-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("../public/fonts/gilroy/Gilroy-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("../public/fonts/gilroy/Gilroy-RegularItalic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("../public/fonts/gilroy/Gilroy-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("../public/fonts/gilroy/Gilroy-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("../public/fonts/gilroy/Gilroy-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("../public/fonts/gilroy/Gilroy-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("../public/fonts/gilroy/Gilroy-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Optional utility to force Gilroy */
+.font-gilroy {
+  font-family: "Gilroy", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Neutraface Display for promo text */
+@font-face {
+  font-family: "Neutraface Display";
+  src: local("Neutraface Display"), local("sans-serif");
+  font-weight: 900;
+  font-display: swap;
+}
+
+.font-neutraface {
+  font-family: "Neutraface Display", "Arial Black", sans-serif;
+}
+
 @theme inline {
-  --font-sans: "Inter", sans-serif;
-  --font-heading: "Montserrat", sans-serif;
-  --font-hand: "Architects Daughter", cursive;
+  --font-sans: "Gilroy", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Gilroy", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Gilroy", ui-sans-serif, system-ui, sans-serif;
+  --font-neutraface: "Neutraface Display", "Arial Black", sans-serif;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
-  
+
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
-  
+
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
-  
+
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
-  
+
   --color-brand-purple: hsl(var(--brand-purple));
   --color-brand-purple-light: hsl(var(--brand-purple-light));
   --color-brand-green: hsl(var(--brand-green));
@@ -44,27 +120,70 @@
 
   --accent: 210 40% 96.1%;
   --accent-foreground: 222 47% 11.2%;
-  
+
   --brand-purple: 260 60% 65%; /* Soft Purple from hero */
   --brand-purple-light: 260 100% 95%; /* Very light purple for backgrounds */
   --brand-green: 160 100% 40%; /* The bright green button color */
+  --brand-text: #272525; /* Dark gray/charcoal for text */
 
   --radius: 0.5rem;
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-family-gilroy);
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-gilroy);
 }
 
 .font-hand {
-  font-family: var(--font-hand);
+  font-family: var(--font-family-gilroy);
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 64px;
+  letter-spacing: 0%;
+}
+
+h2 {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 48px;
+}
+
+h3 {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 36px;
+}
+
+h4 {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 24px;
+  letter-spacing: 0%;
+}
+
+h5 {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0%;
+}
+
+h6 {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0%;
 }
 
 /* Custom Wavy Background Utility */
@@ -102,4 +221,14 @@ h1, h2, h3, h4, h5, h6 {
   height: 100px;
   background: white;
   clip-path: ellipse(60% 60% at 50% 100%);
+}
+
+/* Promo text styling for "ШОППЕРЫ СО СКИДКОЙ - 25%" */
+.promo-text {
+  font-family: "Neutraface Display", "Arial Black", sans-serif;
+  font-weight: 900;
+  font-size: 38.04px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-transform: lowercase;
 }
